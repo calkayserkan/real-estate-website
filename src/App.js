@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import { Toaster } from "react-hot-toast";
 import './App.css';
+import IlanList from "./pages/Ilanlar";
+import Admin from "./pages/Admin";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Toaster toastOptions={{ duration: "300" }} position="top-right"/>
+      <Routes>
+        <Route path="/" element={<Homepage/>}></Route>
+        <Route path="/admin-l" element={<Login/>}></Route>
+        <Route path="/admin-r" element={<Register/>}></Route>
+        <Route path="/ilanlar" element={<IlanList/>}></Route>
+        <Route path="/admin/*" element={<Admin/>}></Route>
+      </Routes>
+    </>
   );
 }
 
